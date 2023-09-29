@@ -2,11 +2,11 @@ using InnerBalance.API.Domain.Enums;
 
 namespace InnerBalance.API.Domain.Models;
 
-public class Class
+public class YogaClass
 {
     public string Name { get; set; } = string.Empty;
     public string? Description { get; set; }
-    public Room Roomba { get; set; }
+    public Room Room { get; set; }
     public YogaStyle? YogaStyle { get; set; }
     public DifficultyLevel? DifficultyLevel { get; set; }
     public DateOnly Date { get; set; }
