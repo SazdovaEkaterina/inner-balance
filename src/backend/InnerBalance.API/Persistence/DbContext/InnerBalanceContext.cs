@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InnerBalance.API.Persistence.DbContext;
 
-public class InnerBalanceDbContext : IdentityDbContext<User>
+public class InnerBalanceContext : IdentityDbContext<User>
 {
     public DbSet<Room> Rooms { get; set; } = null!;
     public DbSet<Style> Styles { get; set; } = null!;
@@ -12,10 +12,9 @@ public class InnerBalanceDbContext : IdentityDbContext<User>
         
     public new DbSet<User> Users { get; set; } = null!;
     
-    public InnerBalanceDbContext(DbContextOptions<InnerBalanceDbContext> options)
+    public InnerBalanceContext(DbContextOptions<InnerBalanceContext> options)
         :base(options)
     {
         
     }
-    
 }
