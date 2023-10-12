@@ -18,6 +18,6 @@ public class YogaClass
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }
     public int? NumberOfSpots { get; set; }
-    public User Teacher { get; set; }
-    public List<User> Participants { get; set; } = new List<User>();
+    public YogaTeacher Teacher { get; set; }
+    public List<YogaStudent> Participants { get; set; } = new List<YogaStudent>();
 }
