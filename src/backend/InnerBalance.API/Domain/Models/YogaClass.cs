@@ -11,13 +11,13 @@ public class YogaClass
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public string? Description { get; set; }
-    public Room Room { get; set; }
+    public Room? Room { get; set; }
     public Style? Style { get; set; }
     public DifficultyLevel? DifficultyLevel { get; set; }
     public DateOnly Date { get; set; }
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }
     public int? NumberOfSpots { get; set; }
-    public YogaTeacher Teacher { get; set; }
+    public YogaTeacher? Teacher { get; set; }
     public List<YogaStudent> Participants { get; set; } = new List<YogaStudent>();
 }
