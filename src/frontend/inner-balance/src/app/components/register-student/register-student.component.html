@@ -18,7 +18,7 @@
     <label for="membership"><b>Membership</b></label>
 
     <select name="membership" id="membership" formControlName="membership">
-        <option *ngFor="let item of memberships" value="item.value">{{item.name}}</option>
+        <option *ngFor="let item of memberships" [value]="item.value">{{item.name}}</option>
     </select>
 
     <button type="submit" [disabled]="formGroup.invalid">Register</button>
