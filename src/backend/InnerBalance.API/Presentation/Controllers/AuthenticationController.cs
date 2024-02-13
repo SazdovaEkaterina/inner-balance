@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace InnerBalance.API.Presentation.Controllers;
 
+[ApiController]
+[Route("api/authentication")]
 public class AuthenticationController : ControllerBase
 {
     private readonly UserManager<User> _userManager;
