@@ -1,16 +1,17 @@
 using System.Text;
+using InnerBalance.API.Business.Services;
+using InnerBalance.API.Business.Services.Implementation;
 using InnerBalance.API.Domain.Models;
 using InnerBalance.API.Persistence.DbContext;
+using InnerBalance.API.Persistence.Repositories;
+using InnerBalance.API.Persistence.Repositories.Implementation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -50,12 +51,21 @@ builder.Services.AddAuthentication("Bearer")
             };
         }
     );
+builder.Services.AddScoped<IInnerBalanceRepository, InnerBalanceRepository>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IStyleRepository, StyleRepository>();
+builder.Services.AddScoped<IYogaClassRepository, YogaClassRepository>();
+builder.Services.AddScoped(typeof(UserManager<>));
+
+builder.Services.AddTransient<IInnerBalanceService, InnerBalanceService>();
+builder.Services.AddTransient<IYogaClassService, YogaClassService>();
 
 builder.Services.AddScoped(typeof(UserManager<>));
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
