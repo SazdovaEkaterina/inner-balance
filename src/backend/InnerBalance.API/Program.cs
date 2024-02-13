@@ -1,7 +1,9 @@
+using System.Text;
 using InnerBalance.API.Domain.Models;
 using InnerBalance.API.Persistence.DbContext;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,12 +26,30 @@ builder.Services.AddDbContext<InnerBalanceContext>(
     )
 );
 
-builder.Services.AddIdentity<User, IdentityRole>(options =>
-    {
-        options.User.RequireUniqueEmail = true;
-    })
-    .AddEntityFrameworkStores<InnerBalanceContext>()
-    .AddDefaultTokenProviders(); 
+builder.Services.AddDefaultIdentity<User>(
+        options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<InnerBalanceContext>();
+
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = builder.Configuration["Authentication:Issuer"],
+                ValidAudience = builder.Configuration["Authentication:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey
+                (
+                    Encoding.ASCII.GetBytes
+                    (
+                        builder.Configuration["Authentication:SecretForKey"]
+                    )
+                )
+            };
+        }
+    );
 
 builder.Services.AddScoped(typeof(UserManager<>));
 
@@ -43,6 +63,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .WithOrigins("http://localhost:4200"));
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
