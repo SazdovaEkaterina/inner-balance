@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DropdownItem } from 'src/app/models/dropdown-item';
 import { RegisterStudentModel } from 'src/app/models/register-student';
@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './register-student.component.html',
   styleUrls: ['./register-student.component.scss']
 })
-export class RegisterStudentComponent {
+export class RegisterStudentComponent implements OnInit {
   public formGroup: FormGroup = this.formBuilder.group({});
   public memberships: DropdownItem[] = [
     {

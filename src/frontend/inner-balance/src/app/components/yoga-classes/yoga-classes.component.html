@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+<button (click)="add()">Add</button>
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Room</th>
+      <th>Style</th>
+      <th>Difficulty Level</th>
+      <th>Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Number Of Spots</th>
+      <th>Teacher</th>
+    </tr>
+    <tr *ngFor="let yogaClass of yogaClasses">
+      <td>{{yogaClass.name}}</td>
+      <td>{{yogaClass.description}}</td>
+      <td>{{yogaClass.room}}</td>
+      <td>{{yogaClass.style}}</td>
+      <td>{{yogaClass.difficultyLevel}}</td>
+      <td>{{yogaClass.date}}</td>
+      <td>{{yogaClass.startTime}}</td>
+      <td>{{yogaClass.endTime}}</td>
+      <td>{{yogaClass.numberOfSpots}}</td>
+      <td>{{yogaClass.teacherId}}</td>
+      <td><button (click)="edit(yogaClass)">Edit</button></td>
+      <td><button (click)="delete(yogaClass.id)">Delete</button></td>
+    </tr>
+</table>

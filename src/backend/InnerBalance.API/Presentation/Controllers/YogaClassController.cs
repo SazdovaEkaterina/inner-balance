@@ -76,7 +76,7 @@ public class YogaClassController : ControllerBase
         return Ok(_mapper.Map<YogaClassDto>(yogaClass));
     }
     
-    [HttpDelete]
+    [HttpDelete("{id}/delete")]
     public async Task<ActionResult> Delete([FromRoute] int id)
     {
         var yogaClass = await _yogaClassService.GetYogaClassAsync(id);
@@ -89,6 +89,6 @@ public class YogaClassController : ControllerBase
         _yogaClassService.DeleteYogaClass(yogaClass);
         await _innerBalanceService.SaveChangesAsync();
         
-        return NoContent();
+        return Ok();
     }
 }

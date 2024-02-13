@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterTeacherComponent } from './components/register-teacher/register-teacher.component';
 import { RegisterStudentComponent } from './components/register-student/register-student.component';
 import { AppComponent } from './app.component';
+import { YogaClassesComponent } from './components/yoga-classes/yoga-classes.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'register-student',
     component: RegisterStudentComponent
+  },
+  {
+    path: 'yoga-classes',
+    component: YogaClassesComponent
   },
   {
     path: '',

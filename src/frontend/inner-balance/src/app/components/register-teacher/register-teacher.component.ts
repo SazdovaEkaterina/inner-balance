@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterTeacherModel } from 'src/app/models/register-teacher';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './register-teacher.component.html',
   styleUrls: ['./register-teacher.component.scss']
 })
-export class RegisterTeacherComponent {
+export class RegisterTeacherComponent implements OnInit {
   public formGroup: FormGroup = this.formBuilder.group({});
 
   constructor(
