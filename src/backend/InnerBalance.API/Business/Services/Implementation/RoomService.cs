@@ -14,21 +14,21 @@ public class RoomService : IRoomService
 
     public Task<IEnumerable<Room>> GetRoomsAsync()
     {
-        throw new NotImplementedException();
+        return _roomRepository.GetRoomsAsync();
     }
 
     public Task<Room?> GetRoomAsync(int id)
     {
-        throw new NotImplementedException();
+        return _roomRepository.GetRoomAsync(id);
     }
 
     public void AddRoom(Room room)
     {
-        throw new NotImplementedException();
+        _roomRepository.AddRoom(room);
     }
 
     public void DeleteRoom(Room room)
     {
-        throw new NotImplementedException();
+        _roomRepository.DeleteRoom(room);
     }
 }

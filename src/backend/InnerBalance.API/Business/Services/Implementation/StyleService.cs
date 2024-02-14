@@ -14,21 +14,21 @@ public class StyleService : IStyleService
 
     public Task<IEnumerable<Style>> GetStylesAsync()
     {
-        throw new NotImplementedException();
+        return _styleRepository.GetStylesAsync();
     }
 
     public Task<Style?> GetStyleAsync(int id)
     {
-        throw new NotImplementedException();
+        return _styleRepository.GetStyleAsync(id);
     }
 
     public void AddStyle(Style style)
     {
-        throw new NotImplementedException();
+        _styleRepository.AddStyle(style);
     }
 
     public void DeleteStyle(Style style)
     {
-        throw new NotImplementedException();
+        _styleRepository.DeleteStyle(style);
     }
 }
